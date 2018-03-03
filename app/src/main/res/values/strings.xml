@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Crypto Tracker</string>
+    <string name="week_label">7d:</string>
+    <string name="day_label">24h:</string>
+    <string name="crypto_icon_content_description">CryptoIcon</string>
+    <string name="network_error">Remote network data loading failed</string>
+</resources>
