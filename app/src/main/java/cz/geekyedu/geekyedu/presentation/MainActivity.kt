@@ -18,10 +18,13 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        loadData()
+    }
 
+    private fun loadData() {
         val cryptoListRequest: Call<List<CryptoCurrency>> = CryptoProvider.cryptoService.cryptoList(10)
         cryptoListRequest.setEnqueue(
-                onResponse = {call, response ->
+                onResponse = { call, response ->
                     if (response.isSuccessful) {
                         val cryptoCurrency = response.body()!![0]
                         showModel(cryptoCurrency)
@@ -29,7 +32,7 @@ class MainActivity : AppCompatActivity() {
                         showRemoteError()
                     }
                 },
-                onFailure = {call, t -> showRemoteError() }
+                onFailure = { call, t -> showRemoteError() }
         )
     }
 
@@ -56,6 +59,5 @@ class MainActivity : AppCompatActivity() {
 
     private fun showRemoteError() {
         Toast.makeText(this, R.string.network_error, Toast.LENGTH_LONG).show()
-
     }
 }
