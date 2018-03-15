@@ -34,6 +34,5 @@ class MainActivity : AppCompatActivity() {
             isVisible -> progressView.isVisible = isVisible ?: false
         })
     }
-
-
 }
+
