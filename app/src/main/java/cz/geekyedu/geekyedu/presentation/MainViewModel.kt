@@ -25,8 +25,7 @@ class MainViewModel : ViewModel() {
         cryptoListRequest.setEnqueue(
                 onResponse = { call, response ->
                     if (response.isSuccessful) {
-                        val cryptoCurrencyList = response.body()!!
-                        cryptoList.value = cryptoCurrencyList
+                        cryptoList.value = response.body()
                     }
                     loadingVisibility.value = false
                 },
