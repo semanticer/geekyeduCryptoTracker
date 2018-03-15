@@ -35,22 +35,25 @@ class MainActivity : AppCompatActivity() {
 
         // setup view model observers and listeners
         viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
-        cryptoAdapter.onItemListener = { viewModel.onCryptoItemSelected(it) }
-        viewModel.cryptoList.observe(this, Observer {   list ->
-            list?.let { cryptoAdapter.submitList(it) }
-        })
-        viewModel.loadingVisibility.observe(this, Observer { isVisible ->
-            progressView.isVisible = isVisible ?: false
-        })
-        viewModel.cryptoAmountEditDialog.observe(this, Observer { crypto ->
-            if (crypto != null) {
+        viewModel.apply {
+            cryptoAdapter.onItemListener = { onCryptoItemSelected(it) }
+            cryptoList.observe(this@MainActivity, Observer {   list ->
+                list?.let { cryptoAdapter.submitList(it) }
+            })
+            loadingVisibility.observe(this@MainActivity, Observer { isVisible ->
+                progressView.isVisible = isVisible ?: false
+            })
+            cryptoAmountEditDialog.observe(this@MainActivity, Observer { crypto ->
+                if (crypto != null) {
                     showInputDialog(crypto)
-            } else dismissDialog()
-        })
-        viewModel.cryptoTotal.observe(this, Observer { totalAmount ->
-            totalPriceView.text = "$ $totalAmount"
-            totalLayoutView.isGone = totalAmount == null || totalAmount == 0.0
-        })
+                } else dismissDialog()
+            })
+            cryptoTotal.observe(this@MainActivity, Observer { totalAmount ->
+                totalPriceView.text = "$ $totalAmount"
+                totalLayoutView.isGone = totalAmount == null || totalAmount == 0.0
+            })
+        }
+
     }
 
     private fun showInputDialog(cryptoCurrency: CryptoCurrency) {
