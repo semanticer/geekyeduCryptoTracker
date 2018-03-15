@@ -1,25 +1,35 @@
 package cz.geekyedu.geekyedu.presentation
 
+import android.app.Application
+import android.arch.lifecycle.AndroidViewModel
 import android.arch.lifecycle.MutableLiveData
-import android.arch.lifecycle.ViewModel
-import android.util.Log
+import android.os.AsyncTask
+import cz.geekyedu.geekyedu.data.db.CryptoCurrencyAmount
+import cz.geekyedu.geekyedu.data.db.CryptoDataBase
 import cz.geekyedu.geekyedu.data.model.CryptoCurrency
 import cz.geekyedu.geekyedu.data.remote.CryptoService
+import cz.geekyedu.geekyedu.presentation.utils.map
 import cz.geekyedu.geekyedu.presentation.utils.setEnqueue
+import cz.geekyedu.geekyedu.presentation.utils.zipLiveData
 import retrofit2.Call
 
-class MainViewModel : ViewModel() {
 
-    val cryptoList = MutableLiveData<List<CryptoCurrency>>()
+class MainViewModel(app: Application) : AndroidViewModel(app) {
+
     val loadingVisibility = MutableLiveData<Boolean>()
-    val cryptoAmountEditDialog = MutableLiveData<CryptoCurrency?>()
+    val cryptoAmountEditDialog = MutableLiveData<CryptoCurrency>()
+    val cryptoList by lazy { loadCryptoList() }
+    val cryptoTotal by lazy {
+        zipLiveData(cryptoCurrencyDao.getAll(), cryptoList).map { (amounts, listCurrencies) ->
+            fun getCryptoPrice(cryptoId: String) = listCurrencies.find { crypto -> crypto.id == cryptoId }!!.priceUsd
+            amounts.map { getCryptoPrice(it.id) * it.amount }.sum()
+        }
+    }
+    private val cryptoCurrencyDao by lazy { CryptoDataBase.getInstance(getApplication())!!.cryptoCurrencyDao() }
 
     init {
         loadingVisibility.value = false
         cryptoAmountEditDialog.value = null
-        if (cryptoList.value == null) {
-            loadCryptoList()
-        }
     }
 
     fun onCryptoItemSelected(cryptoCurrency: CryptoCurrency) {
@@ -27,20 +37,24 @@ class MainViewModel : ViewModel() {
     }
 
     fun onCryptoAmountEntered(cryptoCurrency: CryptoCurrency, amount: Double) {
-        Log.i("onCryptoAmountEntered", "${cryptoCurrency.name} => $amount")
+        AsyncTask.execute {
+            cryptoCurrencyDao.insert(CryptoCurrencyAmount(cryptoCurrency.id, amount))
+        }
     }
 
-    private fun loadCryptoList() {
+    private fun loadCryptoList(): MutableLiveData<List<CryptoCurrency>> {
+        val liveData = MutableLiveData<List<CryptoCurrency>>()
         loadingVisibility.value = true
         val cryptoListRequest: Call<List<CryptoCurrency>> = CryptoService.instance.cryptoList(10)
         cryptoListRequest.setEnqueue(
                 onResponse = { call, response ->
                     if (response.isSuccessful) {
-                        cryptoList.value = response.body()
+                        liveData.value = response.body()
                     }
                     loadingVisibility.value = false
                 },
                 onFailure = { call, t -> loadingVisibility.value = false }
         )
+        return liveData
     }
 }

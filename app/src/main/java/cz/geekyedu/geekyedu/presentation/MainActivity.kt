@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.text.InputType
 import android.widget.Toast
+import androidx.view.isGone
 import androidx.view.isVisible
 import com.afollestad.materialdialogs.MaterialDialog
 import cz.geekyedu.geekyedu.R
@@ -18,7 +19,6 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var viewModel: MainViewModel
     private var dialog: MaterialDialog? = null
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,16 +36,20 @@ class MainActivity : AppCompatActivity() {
         // setup view model observers and listeners
         viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
         cryptoAdapter.onItemListener = { viewModel.onCryptoItemSelected(it) }
-        viewModel.cryptoList.observe(this, Observer {
-            list -> list?.let { cryptoAdapter.submitList(it) }
+        viewModel.cryptoList.observe(this, Observer {   list ->
+            list?.let { cryptoAdapter.submitList(it) }
         })
-        viewModel.loadingVisibility.observe(this, Observer {
-            isVisible -> progressView.isVisible = isVisible ?: false
+        viewModel.loadingVisibility.observe(this, Observer { isVisible ->
+            progressView.isVisible = isVisible ?: false
         })
-        viewModel.cryptoAmountEditDialog.observe(this, Observer {
-            crypto -> if (crypto != null) {
+        viewModel.cryptoAmountEditDialog.observe(this, Observer { crypto ->
+            if (crypto != null) {
                     showInputDialog(crypto)
-                } else dismissDialog()
+            } else dismissDialog()
+        })
+        viewModel.cryptoTotal.observe(this, Observer { totalAmount ->
+            totalPriceView.text = "$ $totalAmount"
+            totalLayoutView.isGone = totalAmount == null || totalAmount == 0.0
         })
     }
 
