@@ -12,16 +12,22 @@ class MainViewModel : ViewModel() {
 
     val cryptoList = MutableLiveData<List<CryptoCurrency>>()
     val loadingVisibility = MutableLiveData<Boolean>()
+    val cryptoAmountEditDialog = MutableLiveData<CryptoCurrency?>()
 
     init {
         loadingVisibility.value = false
+        cryptoAmountEditDialog.value = null
         if (cryptoList.value == null) {
             loadCryptoList()
         }
     }
 
     fun onCryptoItemSelected(cryptoCurrency: CryptoCurrency) {
-        Log.i("onCryptoItemSelected", cryptoCurrency.name)
+        cryptoAmountEditDialog.value = cryptoCurrency
+    }
+
+    fun onCryptoAmountEntered(cryptoCurrency: CryptoCurrency, amount: Double) {
+        Log.i("onCryptoAmountEntered", "${cryptoCurrency.name} => $amount")
     }
 
     private fun loadCryptoList() {
