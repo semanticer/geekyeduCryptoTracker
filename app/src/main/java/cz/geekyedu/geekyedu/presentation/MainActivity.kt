@@ -12,13 +12,12 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var cryptoAdapter: CryptoAdapter
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        cryptoAdapter = CryptoAdapter()
+        // setup recyclerView
+        val cryptoAdapter = CryptoAdapter()
         val viewManager = LinearLayoutManager(this)
         recyclerView.apply {
             setHasFixedSize(true)
@@ -26,7 +25,9 @@ class MainActivity : AppCompatActivity() {
             adapter = cryptoAdapter
         }
 
+        // setup view model observers and listeners
         val viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
+        cryptoAdapter.onItemListener = { viewModel.onCryptoItemSelected(it) }
         viewModel.cryptoList.observe(this, Observer {
             list -> list?.let { cryptoAdapter.submitList(it) }
         })

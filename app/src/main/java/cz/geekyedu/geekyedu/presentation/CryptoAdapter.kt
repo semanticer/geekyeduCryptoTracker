@@ -16,6 +16,8 @@ import kotlinx.android.synthetic.main.item_crypto.*
 
 class CryptoAdapter : ListAdapter<CryptoCurrency, CryptoAdapter.ViewHolder>(DiffCallback) {
 
+    var onItemListener: (CryptoCurrency) -> Unit = {}
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_crypto, parent, false)
         return ViewHolder(itemView)
@@ -23,6 +25,9 @@ class CryptoAdapter : ListAdapter<CryptoCurrency, CryptoAdapter.ViewHolder>(Diff
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bindTo(getItem(position))
+        holder.containerView.setOnClickListener {
+            onItemListener(getItem(holder.adapterPosition))
+        }
     }
 
 
