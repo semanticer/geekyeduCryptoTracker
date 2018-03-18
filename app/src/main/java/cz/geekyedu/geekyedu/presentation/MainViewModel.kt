@@ -4,7 +4,7 @@ import android.app.Application
 import android.arch.lifecycle.AndroidViewModel
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
-import android.os.AsyncTask
+import android.util.Log
 import cz.geekyedu.geekyedu.data.model.CryptoCurrency
 import cz.geekyedu.geekyedu.data.remote.CryptoService
 import cz.geekyedu.geekyedu.presentation.utils.setEnqueue
@@ -16,7 +16,6 @@ class MainViewModel(app: Application) : AndroidViewModel(app) {
     val loadingVisibility = MutableLiveData<Boolean>()
     val cryptoAmountEditDialog = MutableLiveData<CryptoCurrency>()
     val cryptoList by lazy { loadCryptoList() }
-    val cryptoTotal by lazy { loadCryptoTotal() }
 
 
     fun onCryptoItemSelected(cryptoCurrency: CryptoCurrency) {
@@ -24,9 +23,7 @@ class MainViewModel(app: Application) : AndroidViewModel(app) {
     }
 
     fun onCryptoAmountEntered(cryptoCurrency: CryptoCurrency, amount: Double) {
-        AsyncTask.execute {
-            TODO("Insert data to the database using CryptoCurrencyDao")
-        }
+        Log.i("MainViewModel", "cryptoCurrency: ${cryptoCurrency.name} amount: $amount")
     }
 
     private fun loadCryptoList(): MutableLiveData<List<CryptoCurrency>> {
@@ -43,12 +40,6 @@ class MainViewModel(app: Application) : AndroidViewModel(app) {
                 onFailure = { call, t -> hideLoading() }
         )
         return liveData
-    }
-
-    private fun loadCryptoTotal(): LiveData<Double> {
-        TODO("Use zipLiveData to merge info from locally saved values (using CryptoCurrencyDao) " +
-                "with current prices from the server " +
-                "and compute total value of the portfolio")
     }
 
     private fun showLoading() { loadingVisibility.value = true }

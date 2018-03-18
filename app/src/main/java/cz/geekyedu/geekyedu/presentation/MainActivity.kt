@@ -47,9 +47,7 @@ class MainActivity : AppCompatActivity() {
                     showInputDialog(crypto)
                 } else dismissDialog()
             })
-            // TODO observe sum total
         }
-
     }
 
     private fun showInputDialog(cryptoCurrency: CryptoCurrency) {
