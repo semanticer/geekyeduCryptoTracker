@@ -14,12 +14,12 @@ import retrofit2.Call
 class MainViewModel(app: Application) : AndroidViewModel(app) {
 
     val loadingVisibility = MutableLiveData<Boolean>()
-    val cryptoAmountEditDialog = MutableLiveData<CryptoCurrency>()
     val cryptoList by lazy { loadCryptoList() }
+    // TODO add edit dialog LiveData with CryptoCurrency that should be edited
 
 
     fun onCryptoItemSelected(cryptoCurrency: CryptoCurrency) {
-        cryptoAmountEditDialog.value = cryptoCurrency
+        // TODO change dialog live data to provide this selected Crypto currency
     }
 
     fun onCryptoAmountEntered(cryptoCurrency: CryptoCurrency, amount: Double) {

@@ -35,34 +35,20 @@ class MainActivity : AppCompatActivity() {
         // setup view model observers and listeners
         viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
         viewModel.apply {
-            cryptoAdapter.onItemListener = { onCryptoItemSelected(it) }
+            // TODO set adapter'ss onItemListener and call
             cryptoList.observe(this@MainActivity, Observer {   list ->
                 list?.let { cryptoAdapter.submitList(it) }
             })
             loadingVisibility.observe(this@MainActivity, Observer { isVisible ->
                 progressView.isVisible = isVisible ?: false
             })
-            cryptoAmountEditDialog.observe(this@MainActivity, Observer { crypto ->
-                if (crypto != null) {
-                    showInputDialog(crypto)
-                } else dismissDialog()
-            })
+            // TODO observe amount edit dialog and show or dismiss dialog based on that
         }
     }
 
     private fun showInputDialog(cryptoCurrency: CryptoCurrency) {
-        dialog = MaterialDialog.Builder(this)
-                .title(cryptoCurrency.name)
-                .inputType(InputType.TYPE_NUMBER_FLAG_SIGNED)
-                .input(getString(R.string.your_amount_of) + " ${cryptoCurrency.symbol}", "", { dialog, input ->
-                    val amount = try { input.toString().toDouble() } catch (e: NumberFormatException) { null }
-                    if (amount != null) {
-                        viewModel.onCryptoAmountEntered(cryptoCurrency, amount)
-                    } else {
-                        Toast.makeText(this, R.string.amount_format_error, Toast.LENGTH_LONG).show()
-                    }
-                })
-                .build()
+        dialog = TODO("Build input dialog https://github.com/afollestad/material-dialogs#input-dialogs")
+
         dialog?.apply { show() }
     }
     private fun dismissDialog() {
