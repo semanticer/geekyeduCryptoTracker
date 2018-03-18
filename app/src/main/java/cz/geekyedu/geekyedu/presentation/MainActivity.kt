@@ -7,7 +7,6 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.text.InputType
 import android.widget.Toast
-import androidx.view.isGone
 import androidx.view.isVisible
 import com.afollestad.materialdialogs.MaterialDialog
 import cz.geekyedu.geekyedu.R
@@ -48,10 +47,7 @@ class MainActivity : AppCompatActivity() {
                     showInputDialog(crypto)
                 } else dismissDialog()
             })
-            cryptoTotal.observe(this@MainActivity, Observer { totalAmount ->
-                totalPriceView.text = "$ $totalAmount"
-                totalLayoutView.isGone = totalAmount == null || totalAmount == 0.0
-            })
+            // TODO observe sum total
         }
 
     }

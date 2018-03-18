@@ -5,13 +5,9 @@ import android.arch.lifecycle.AndroidViewModel
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
 import android.os.AsyncTask
-import cz.geekyedu.geekyedu.data.db.CryptoCurrencyAmount
-import cz.geekyedu.geekyedu.data.db.CryptoDataBase
 import cz.geekyedu.geekyedu.data.model.CryptoCurrency
 import cz.geekyedu.geekyedu.data.remote.CryptoService
-import cz.geekyedu.geekyedu.presentation.utils.map
 import cz.geekyedu.geekyedu.presentation.utils.setEnqueue
-import cz.geekyedu.geekyedu.presentation.utils.zipLiveData
 import retrofit2.Call
 
 
@@ -22,8 +18,6 @@ class MainViewModel(app: Application) : AndroidViewModel(app) {
     val cryptoList by lazy { loadCryptoList() }
     val cryptoTotal by lazy { loadCryptoTotal() }
 
-    private val cryptoCurrencyDao by lazy { CryptoDataBase.getInstance(getApplication())!!.cryptoCurrencyDao() }
-
 
     fun onCryptoItemSelected(cryptoCurrency: CryptoCurrency) {
         cryptoAmountEditDialog.value = cryptoCurrency
@@ -31,7 +25,7 @@ class MainViewModel(app: Application) : AndroidViewModel(app) {
 
     fun onCryptoAmountEntered(cryptoCurrency: CryptoCurrency, amount: Double) {
         AsyncTask.execute {
-            cryptoCurrencyDao.insert(CryptoCurrencyAmount(cryptoCurrency.id, amount))
+            TODO("Insert data to the database using CryptoCurrencyDao")
         }
     }
 
@@ -52,10 +46,9 @@ class MainViewModel(app: Application) : AndroidViewModel(app) {
     }
 
     private fun loadCryptoTotal(): LiveData<Double> {
-        return zipLiveData(cryptoCurrencyDao.getAll(), cryptoList).map { (amounts, listCurrencies) ->
-            fun getCryptoPrice(cryptoId: String) = listCurrencies.find { crypto -> crypto.id == cryptoId }!!.priceUsd
-            amounts.map { getCryptoPrice(it.id) * it.amount }.sum()
-        }
+        TODO("Use zipLiveData to merge info from locally saved values (using CryptoCurrencyDao) " +
+                "with current prices from the server " +
+                "and compute total value of the portfolio")
     }
 
     private fun showLoading() { loadingVisibility.value = true }

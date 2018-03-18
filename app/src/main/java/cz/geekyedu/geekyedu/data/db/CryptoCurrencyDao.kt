@@ -1,16 +1,13 @@
 package cz.geekyedu.geekyedu.data.db
 
-import android.arch.lifecycle.LiveData
 import android.arch.persistence.room.Dao
-import android.arch.persistence.room.Insert
-import android.arch.persistence.room.OnConflictStrategy.REPLACE
-import android.arch.persistence.room.Query
+
+//TODO read about Room on https://developer.android.com/training/data-storage/room/index.html
+//TODO or kotlin specific https://medium.com/mindorks/android-architecture-components-room-and-kotlin-f7b725c8d1d
 
 @Dao
 interface CryptoCurrencyDao {
-    @Query("SELECT * from CryptoCurrencyAmount")
-    fun getAll(): LiveData<List<CryptoCurrencyAmount>>
+    // TODO add getAll() method with @Query annotation to get all CryptoCurrencyAmounts
 
-    @Insert(onConflict = REPLACE)
-    fun insert(cryptoCurrencyAmount: CryptoCurrencyAmount)
+    // TODO add insert(cryptoCurrencyAmount: CryptoCurrencyAmount) with @Insert(onConflict = REPLACE) annotation
 }
