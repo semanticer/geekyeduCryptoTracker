@@ -30,7 +30,6 @@ class CryptoAdapter : ListAdapter<CryptoCurrency, CryptoAdapter.ViewHolder>(Diff
         }
     }
 
-
     class ViewHolder(override val containerView: View): RecyclerView.ViewHolder(containerView), LayoutContainer {
         fun bindTo(model: CryptoCurrency) {
             val nameText = "${model.symbol} | ${model.name}"
