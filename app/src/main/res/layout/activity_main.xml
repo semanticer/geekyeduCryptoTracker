@@ -6,11 +6,122 @@
     android:orientation="vertical"
     android:animateLayoutChanges="true">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:scrollbars="vertical"
+    <!-- TODO You need a RecyclerView now and display all this content dynamically -->
+
+    <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="wrap_content"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        app:contentPaddingBottom="12dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        android:clickable="true"
+        android:focusable="true">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+            <ImageView
+                android:id="@+id/iconView"
+                android:layout_width="52dp"
+                android:layout_height="52dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="12dp"
+                android:src="@mipmap/ic_launcher"
+                android:contentDescription="@string/crypto_icon_content_description"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/nameView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:fontFamily="sans-serif-condensed"
+                android:textSize="21sp"
+                app:layout_constraintBottom_toBottomOf="@+id/iconView"
+                app:layout_constraintStart_toEndOf="@+id/iconView"
+                app:layout_constraintTop_toTopOf="@+id/iconView"
+                tools:text="BTC | Bitcoin" />
+
+            <TextView
+                android:id="@+id/priceView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="21sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/nameView"
+                app:layout_constraintStart_toStartOf="@+id/guideline"
+                app:layout_constraintTop_toTopOf="@+id/nameView"
+                tools:text="$ 1058" />
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginEnd="12dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="12dp"
+                android:background="@color/divider"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/iconView" />
+
+            <TextView
+                android:id="@+id/dayLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/day_label"
+                app:layout_constraintStart_toStartOf="@+id/nameView"
+                app:layout_constraintTop_toBottomOf="@+id/view" />
+
+            <TextView
+                android:id="@+id/dayPercent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:textStyle="bold"
+                tools:text="23%"
+                tools:textColor="@color/plus"
+                app:layout_constraintBottom_toBottomOf="@+id/dayLabel"
+                app:layout_constraintStart_toEndOf="@+id/dayLabel"
+                app:layout_constraintTop_toTopOf="@+id/dayLabel" />
+
+            <TextView
+                android:id="@+id/weekLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/week_label"
+                app:layout_constraintStart_toStartOf="@+id/guideline"
+                app:layout_constraintTop_toBottomOf="@+id/view" />
+
+            <TextView
+                android:id="@+id/weekPercent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:textStyle="bold"
+                tools:text="-11%"
+                tools:textColor="@color/minus"
+                app:layout_constraintBottom_toBottomOf="@+id/weekLabel"
+                app:layout_constraintStart_toEndOf="@+id/weekLabel"
+                app:layout_constraintTop_toTopOf="@+id/weekLabel" />
+
+            <android.support.constraint.Guideline
+                android:id="@+id/guideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.70" />
+
+        </android.support.constraint.ConstraintLayout>
+    </android.support.v7.widget.CardView>
 
     <ProgressBar
         android:id="@+id/progressView"
