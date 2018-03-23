@@ -5,19 +5,14 @@ import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
-import android.text.InputType
-import android.widget.Toast
 import androidx.view.isVisible
-import com.afollestad.materialdialogs.MaterialDialog
 import cz.geekyedu.geekyedu.R
-import cz.geekyedu.geekyedu.data.model.CryptoCurrency
 import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var viewModel: MainViewModel
-    private var dialog: MaterialDialog? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,27 +30,14 @@ class MainActivity : AppCompatActivity() {
         // setup view model observers and listeners
         viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
         viewModel.apply {
-            // TODO set adapter'ss onItemListener and call
             cryptoList.observe(this@MainActivity, Observer {   list ->
                 list?.let { cryptoAdapter.submitList(it) }
             })
             loadingVisibility.observe(this@MainActivity, Observer { isVisible ->
                 progressView.isVisible = isVisible ?: false
             })
-            // TODO observe amount edit dialog and show or dismiss dialog based on that
         }
     }
-
-    private fun showInputDialog(cryptoCurrency: CryptoCurrency) {
-        dialog = TODO("Build input dialog https://github.com/afollestad/material-dialogs#input-dialogs")
-
-        dialog?.apply { show() }
-    }
-    private fun dismissDialog() {
-        dialog?.takeUnless { it.isCancelled }
-                ?.apply { dismiss() }
-    }
-
 }
 
 
