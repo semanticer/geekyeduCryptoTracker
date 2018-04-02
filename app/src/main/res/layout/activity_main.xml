@@ -71,48 +71,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/iconView" />
 
-            <TextView
-                android:id="@+id/dayLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="@string/day_label"
-                app:layout_constraintStart_toStartOf="@+id/nameView"
-                app:layout_constraintTop_toBottomOf="@+id/view" />
-
-            <TextView
-                android:id="@+id/dayPercent"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:textStyle="bold"
-                tools:text="23%"
-                tools:textColor="@color/plus"
-                app:layout_constraintBottom_toBottomOf="@+id/dayLabel"
-                app:layout_constraintStart_toEndOf="@+id/dayLabel"
-                app:layout_constraintTop_toTopOf="@+id/dayLabel" />
-
-            <TextView
-                android:id="@+id/weekLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="@string/week_label"
-                app:layout_constraintStart_toStartOf="@+id/guideline"
-                app:layout_constraintTop_toBottomOf="@+id/view" />
-
-            <TextView
-                android:id="@+id/weekPercent"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:textStyle="bold"
-                tools:text="-11%"
-                tools:textColor="@color/minus"
-                app:layout_constraintBottom_toBottomOf="@+id/weekLabel"
-                app:layout_constraintStart_toEndOf="@+id/weekLabel"
-                app:layout_constraintTop_toTopOf="@+id/weekLabel" />
-
             <android.support.constraint.Guideline
                 android:id="@+id/guideline"
                 android:layout_width="wrap_content"

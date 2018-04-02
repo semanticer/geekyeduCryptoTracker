@@ -5,6 +5,6 @@
     <color name="colorAccent">#FF4081</color>
 
     <color name="divider">#dcdfe5</color>
-    <color name="plus">#00BFA5</color>
-    <color name="minus">#DD2C00</color>
+    <!--<color name="plus">#00BFA5</color>-->
+    <!--<color name="minus">#DD2C00</color>-->
 </resources>
