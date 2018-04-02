@@ -16,24 +16,20 @@ import retrofit2.Call
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var cryptoAdapter: CryptoAdapter
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        // TODO crate and setup all the cryptoAdapter & recyclerView stuff
-
-        loadCryptoList()
+        loadFirstCrypto()
     }
 
-    private fun loadCryptoList() {
+    private fun loadFirstCrypto() {
         progressView.isVisible = true
         val cryptoListRequest: Call<List<CryptoCurrency>> = CryptoService.instance.cryptoList(1)
         cryptoListRequest.setEnqueue(
                 onResponse = { call, response ->
                     if (response.isSuccessful) {
-                        // TODO update cryptoAdapter with the new data
+                        val crypto = response.body()!![0]
+                        bindTo(crypto)
                     }
                     progressView.isVisible = false
                 },
@@ -41,7 +37,6 @@ class MainActivity : AppCompatActivity() {
         )
     }
 
-    // TODO all this binding logic should end up somewhere else
     private fun bindTo(model: CryptoCurrency) {
         val nameText = "${model.symbol} | ${model.name}"
         val priceText = "$ ${model.priceUsd}"
