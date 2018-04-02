@@ -6,12 +6,9 @@ import android.widget.TextView
 import androidx.view.isVisible
 import cz.geekyedu.geekyedu.R
 import cz.geekyedu.geekyedu.data.model.CryptoCurrency
-import cz.geekyedu.geekyedu.data.remote.CryptoService
 import cz.geekyedu.geekyedu.presentation.utils.CryptoIconHelper
 import cz.geekyedu.geekyedu.presentation.utils.GlideApp
-import cz.geekyedu.geekyedu.presentation.utils.setEnqueue
 import kotlinx.android.synthetic.main.activity_main.*
-import retrofit2.Call
 
 
 class MainActivity : AppCompatActivity() {
@@ -24,17 +21,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun loadFirstCrypto() {
         progressView.isVisible = true
-        val cryptoListRequest: Call<List<CryptoCurrency>> = CryptoService.instance.cryptoList(1)
-        cryptoListRequest.setEnqueue(
-                onResponse = { call, response ->
-                    if (response.isSuccessful) {
-                        val crypto = response.body()!![0]
-                        bindTo(crypto)
-                    }
-                    progressView.isVisible = false
-                },
-                onFailure = { call, t -> progressView.isVisible = false }
-        )
+        // TODO use CryptoService instance to load crypto currencies and send the first one to bindTo method. Use helper extension method setEnqueue to set handler for Call
+        val cryptoListRequest: Call<List<CryptoCurrency>> = TODO("Get request")
     }
 
     private fun bindTo(model: CryptoCurrency) {
