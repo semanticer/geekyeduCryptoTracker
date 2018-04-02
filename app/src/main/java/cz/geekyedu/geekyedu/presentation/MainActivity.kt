@@ -1,6 +1,5 @@
 package cz.geekyedu.geekyedu.presentation
 
-import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
@@ -15,7 +14,6 @@ import retrofit2.Call
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var viewModel: MainViewModel
     private lateinit var cryptoAdapter: CryptoAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,14 +29,9 @@ class MainActivity : AppCompatActivity() {
             adapter = cryptoAdapter
         }
 
-        // setup view model observers and listeners
-        viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
-        // TODO observe liveData of progressView visibility and liveData of List<CryptoCurrency>
-
-        loadCryptoList() // TODO remove this
+        loadCryptoList()
     }
 
-    // TODO this should be in viewModel now and distribute new data via LiveData stream to this activity
     private fun loadCryptoList() {
         progressView.isVisible = true
         val cryptoListRequest: Call<List<CryptoCurrency>> = CryptoService.instance.cryptoList(10)
