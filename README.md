@@ -26,6 +26,11 @@ Resources:
 Now we will get rid of all dummy data and load real stuff from the API. We will load and parse JSON
 data and display it the same way we did in Step 1.
 
+TODOs:
+* [Add retrofit and Moshi to gradle resources](https://github.com/semanticer/geekyeduCryptoTracker/blob/d47f96e76e70fce7458552f09cce3dce629a464e/app/build.gradle#L56)
+* [Create retrofit service for ticker method](https://github.com/semanticer/geekyeduCryptoTracker/blob/step-2/app/src/main/java/cz/geekyedu/geekyedu/data/remote/CryptoService.kt)
+* [Use CryptoService instance to load crypto currencies and send the first one to bindTo method](https://github.com/semanticer/geekyeduCryptoTracker/blob/d47f96e76e70fce7458552f09cce3dce629a464e/app/src/main/java/cz/geekyedu/geekyedu/presentation/MainActivity.kt#L24)
+
 Resources:
 * [Retrofit - type-safe HTTP client](http://square.github.io/retrofit/)
 * [Moshi - JSON parsing library](https://github.com/square/moshi)
