@@ -6,6 +6,13 @@ This app is meant for education purposes
 
 In this part, our goal is to edit xml layout and show new pieces of information in it.
 
+TODOs:
+* [Add day and week percentage labels and value TextViews](https://github.com/semanticer/geekyeduCryptoTracker/blob/1ef3eb480b8db1a4bf0ffdea3f66581a911eafff/app/src/main/res/layout/activity_main.xml#L79)
+* [Add percentChange24h and percentChange7d Doubles to CryptoCurrency data class](https://github.com/semanticer/geekyeduCryptoTracker/blob/1ef3eb480b8db1a4bf0ffdea3f66581a911eafff/app/src/main/java/cz/geekyedu/geekyedu/data/model/CryptoCurrency.kt#L4)
+* [Bind dummy data model to views](https://github.com/semanticer/geekyeduCryptoTracker/blob/1ef3eb480b8db1a4bf0ffdea3f66581a911eafff/app/src/main/java/cz/geekyedu/geekyedu/presentation/MainActivity.kt#L27)
+* [Uncommend new color resources](https://github.com/semanticer/geekyeduCryptoTracker/blob/step-1/app/src/main/res/values/colors.xml)
+
+
 Resources:
 * [Android Layouts](https://developer.android.com/guide/topics/ui/declaring-layout.html)
 * [ConstaintLayout](https://constraintlayout.com/)
