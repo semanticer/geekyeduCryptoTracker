@@ -76,6 +76,8 @@
                 android:orientation="vertical"
                 app:layout_constraintGuide_percent="0.70" />
 
+            <!-- TODO add day and week percentage labels and values TextViews -->
+
         </android.support.constraint.ConstraintLayout>
     </android.support.v7.widget.CardView>
 

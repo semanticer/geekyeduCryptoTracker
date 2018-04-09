@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
 
         // TODO show price from model in correct textView
 
-        // TODO set percentages with plus or minus color from resources
+        // TODO set day/week percentages with plus or minus color from resources
 
         val iconUrl = CryptoIconHelper.getIconUrl(model.id)
         // TODO show icon from iconUrl using GlideApp
