@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // TODO crate and setup all the cryptoAdapter & recyclerView stuff
+        // TODO create and setup all the cryptoAdapter & recyclerView stuff
 
         loadCryptoList()
     }
