@@ -39,6 +39,13 @@ Resources:
 We don't want to check just one crypto currency, we want more! And for that purpose we need to learn
 how to display data in a list(RecyclerView).
 
+TODOs:
+* [Implement Adapter and ViewHolder](https://github.com/semanticer/geekyeduCryptoTracker/blob/step-3/app/src/main/java/cz/geekyedu/geekyedu/presentation/CryptoAdapter.kt)
+* [create and setup all the cryptoAdapter & recyclerView stuff](https://github.com/semanticer/geekyeduCryptoTracker/blob/73fd31725e798a8b84488ebec9da0268f38f8fa6/app/src/main/java/cz/geekyedu/geekyedu/presentation/MainActivity.kt#L25)
+* [Update cryptoAdapter with the new data](https://github.com/semanticer/geekyeduCryptoTracker/blob/73fd31725e798a8b84488ebec9da0268f38f8fa6/app/src/main/java/cz/geekyedu/geekyedu/presentation/MainActivity.kt#L36)
+* [Move binding logic](https://github.com/semanticer/geekyeduCryptoTracker/blob/73fd31725e798a8b84488ebec9da0268f38f8fa6/app/src/main/java/cz/geekyedu/geekyedu/presentation/MainActivity.kt#L44)
+* [Add recyclerView to activity_main layout and extract crypto currency item view](https://github.com/semanticer/geekyeduCryptoTracker/blob/step-3/app/src/main/res/layout/activity_main.xml)
+
 Resources:
 * [Create a List with RecyclerView](https://developer.android.com/guide/topics/ui/layout/recyclerview.html)
 * [ListAdapter better subclass of RecyclerView.Adapter](https://developer.android.com/reference/android/support/v7/recyclerview/extensions/ListAdapter.html)
