@@ -55,6 +55,9 @@ Now rotate the app and check how it loads up the data wastefully again. Our acti
 so we need to find a safe space to survive and we can also learn how to correctly architecture the app
 along the way.
 
+TODOs:
+* [Extract logic from Activity to ViewModel](https://github.com/semanticer/geekyeduCryptoTracker/blob/step-4/app/src/main/java/cz/geekyedu/geekyedu/presentation/MainActivity.kt)
+
 Resources:
 * [Activity Lifecycle](https://developer.android.com/guide/components/activities/activity-lifecycle.html)
 * [About configuration change problem, and basic ways to handle it](https://developer.android.com/guide/topics/resources/runtime-changes.html)
