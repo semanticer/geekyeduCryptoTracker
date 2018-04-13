@@ -5,8 +5,6 @@ import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
-import android.text.InputType
-import android.widget.Toast
 import androidx.view.isVisible
 import com.afollestad.materialdialogs.MaterialDialog
 import cz.geekyedu.geekyedu.R
@@ -35,7 +33,7 @@ class MainActivity : AppCompatActivity() {
         // setup view model observers and listeners
         viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
         viewModel.apply {
-            // TODO set adapter'ss onItemListener and call
+            // TODO set adapter's onItemListener property
             cryptoList.observe(this@MainActivity, Observer {   list ->
                 list?.let { cryptoAdapter.submitList(it) }
             })
