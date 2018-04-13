@@ -69,6 +69,15 @@ Resources:
 This step is basically a UI preparation for the next one, the grand finale. We provide click listeners
 for our RecyclerView items, and show edit dialogs for future values to be edited!
 
+TODOs:
+[Add click listener property to adapter](https://github.com/semanticer/geekyeduCryptoTracker/blob/f3e95a4488753ea0132589575092824a71618f36/app/src/main/java/cz/geekyedu/geekyedu/presentation/CryptoAdapter.kt#L19)
+[Use that listener on holder's containerView](https://github.com/semanticer/geekyeduCryptoTracker/blob/f3e95a4488753ea0132589575092824a71618f36/app/src/main/java/cz/geekyedu/geekyedu/presentation/CryptoAdapter.kt#L29)
+[Set item listener from activity and observe edit dialog observable](https://github.com/semanticer/geekyeduCryptoTracker/blob/ac1cb9390b67551c494a364f011efdc0cd11d162/app/src/main/java/cz/geekyedu/geekyedu/presentation/MainActivity.kt#L38)
+[Build input dialog](https://github.com/semanticer/geekyeduCryptoTracker/blob/ac1cb9390b67551c494a364f011efdc0cd11d162/app/src/main/java/cz/geekyedu/geekyedu/presentation/MainActivity.kt#L50)
+[Add edit dialog LiveData](https://github.com/semanticer/geekyeduCryptoTracker/blob/ac1cb9390b67551c494a364f011efdc0cd11d162/app/src/main/java/cz/geekyedu/geekyedu/presentation/MainViewModel.kt#L18)
+[Change dialog live data to provide this selected Crypto currency](https://github.com/semanticer/geekyeduCryptoTracker/blob/ac1cb9390b67551c494a364f011efdc0cd11d162/app/src/main/java/cz/geekyedu/geekyedu/presentation/MainViewModel.kt#L22)
+[Add dialog related strings](https://github.com/semanticer/geekyeduCryptoTracker/blob/ac1cb9390b67551c494a364f011efdc0cd11d162/app/src/main/res/values/strings.xml#L6)
+
 Resources:
 * [Material dialogs](https://github.com/afollestad/material-dialogs)
 
