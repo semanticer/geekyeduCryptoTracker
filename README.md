@@ -92,6 +92,10 @@ TODOs:
 * [Insert data to the database using CryptoCurrencyDao](https://github.com/semanticer/geekyeduCryptoTracker/blob/5b33a27a45785c4540443e88e8ca6dfb8ead30df/app/src/main/java/cz/geekyedu/geekyedu/presentation/MainViewModel.kt#L28)
 * [Use zipLiveData to merge info from locally saved values (using CryptoCurrencyDao) with current prices from the server and compute total value of the portfolio](https://github.com/semanticer/geekyeduCryptoTracker/blob/5b33a27a45785c4540443e88e8ca6dfb8ead30df/app/src/main/java/cz/geekyedu/geekyedu/presentation/MainViewModel.kt#L49)
 * [Refactor to add total sum layout (maybe in CardView container) right above the RecyclerView, you may need to add new root layout](https://github.com/semanticer/geekyeduCryptoTracker/blob/step-6/app/src/main/res/layout/activity_main.xml)
+* BONUS: Show previous value(if there is some) in edit crypto amount dialog
+* BONUS: Show different amounts for every saved crypto amounts
+* BONUS: Use [MPAndroidChart library](https://github.com/PhilJay/MPAndroidChart) to show charts
+* BONUS: Currency settings
 
 Resources:
 * [Room - SQL persistence library](https://developer.android.com/training/data-storage/room/index.html)
