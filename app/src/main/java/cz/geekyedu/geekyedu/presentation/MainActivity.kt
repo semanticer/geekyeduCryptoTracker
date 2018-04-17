@@ -68,9 +68,11 @@ class MainActivity : AppCompatActivity() {
                         Toast.makeText(this, R.string.amount_format_error, Toast.LENGTH_LONG).show()
                     }
                 })
+                .dismissListener { viewModel.cryptoAmountEditDialog.value = null }
                 .build()
         dialog?.apply { show() }
     }
+
     private fun dismissDialog() {
         dialog?.takeUnless { it.isCancelled }
                 ?.apply { dismiss() }

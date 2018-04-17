@@ -18,7 +18,7 @@ import retrofit2.Call
 class MainViewModel(app: Application) : AndroidViewModel(app) {
 
     val loadingVisibility = MutableLiveData<Boolean>()
-    val cryptoAmountEditDialog = MutableLiveData<CryptoCurrency>()
+    val cryptoAmountEditDialog = MutableLiveData<CryptoCurrency?>()
     val cryptoList by lazy { loadCryptoList() }
     val cryptoTotal by lazy { loadCryptoTotal() }
 
