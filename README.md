@@ -85,6 +85,14 @@ Resources:
 Finnaly, we are ready to save our crypto currency values and see how rich we are. But first we
 need to find some Room for our data.
 
+TODOs:
+* [Implement CryptoCurrencyAmount Entity](https://github.com/semanticer/geekyeduCryptoTracker/blob/step-6/app/src/main/java/cz/geekyedu/geekyedu/data/db/CryptoCurrencyAmount.kt)
+* [Declare query and insert functions in Dao interface](https://github.com/semanticer/geekyeduCryptoTracker/blob/step-6/app/src/main/java/cz/geekyedu/geekyedu/data/db/CryptoCurrencyDao.kt)
+* [Observe total sum](https://github.com/semanticer/geekyeduCryptoTracker/blob/5b33a27a45785c4540443e88e8ca6dfb8ead30df/app/src/main/java/cz/geekyedu/geekyedu/presentation/MainActivity.kt#L51)
+* [Insert data to the database using CryptoCurrencyDao](https://github.com/semanticer/geekyeduCryptoTracker/blob/5b33a27a45785c4540443e88e8ca6dfb8ead30df/app/src/main/java/cz/geekyedu/geekyedu/presentation/MainViewModel.kt#L28)
+* [Use zipLiveData to merge info from locally saved values (using CryptoCurrencyDao) with current prices from the server and compute total value of the portfolio](https://github.com/semanticer/geekyeduCryptoTracker/blob/5b33a27a45785c4540443e88e8ca6dfb8ead30df/app/src/main/java/cz/geekyedu/geekyedu/presentation/MainViewModel.kt#L49)
+* [Refactor to add total sum layout (maybe in CardView container) right above the RecyclerView, you may need to add new root layout](https://github.com/semanticer/geekyeduCryptoTracker/blob/step-6/app/src/main/res/layout/activity_main.xml)
+
 Resources:
 * [Room - SQL persistence library](https://developer.android.com/training/data-storage/room/index.html)
 * [Map function](http://rxmarbles.com/#map)
