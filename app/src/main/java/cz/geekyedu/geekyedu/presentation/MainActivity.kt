@@ -7,7 +7,8 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.text.InputType
 import android.widget.Toast
-import androidx.view.isVisible
+import androidx.core.view.isGone
+import androidx.core.view.isVisible
 import com.afollestad.materialdialogs.MaterialDialog
 import cz.geekyedu.geekyedu.R
 import cz.geekyedu.geekyedu.data.model.CryptoCurrency
@@ -64,9 +65,11 @@ class MainActivity : AppCompatActivity() {
                         Toast.makeText(this, R.string.amount_format_error, Toast.LENGTH_LONG).show()
                     }
                 })
+                .dismissListener { viewModel.cryptoAmountEditDialog.value = null }
                 .build()
         dialog?.apply { show() }
     }
+
     private fun dismissDialog() {
         dialog?.takeUnless { it.isCancelled }
                 ?.apply { dismiss() }
