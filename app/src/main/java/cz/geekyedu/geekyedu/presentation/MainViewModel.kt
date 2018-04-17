@@ -4,7 +4,6 @@ import android.app.Application
 import android.arch.lifecycle.AndroidViewModel
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
-import android.arch.persistence.room.Room
 import android.os.AsyncTask
 import cz.geekyedu.geekyedu.data.db.CryptoCurrencyAmount
 import cz.geekyedu.geekyedu.data.db.CryptoDatabase
@@ -23,12 +22,7 @@ class MainViewModel(app: Application) : AndroidViewModel(app) {
     val cryptoList by lazy { loadCryptoList() }
     val cryptoTotal by lazy { loadCryptoTotal() }
 
-    private val cryptoCurrencyDao by lazy {
-        Room.databaseBuilder(app, CryptoDatabase::class.java, "crypto.db")
-                .fallbackToDestructiveMigration()
-                .build()
-                .cryptoCurrencyDao() }
-
+    private val cryptoCurrencyDao by lazy { CryptoDatabase.getInstance(app).cryptoCurrencyDao() }
 
     fun onCryptoItemSelected(cryptoCurrency: CryptoCurrency) {
         cryptoAmountEditDialog.value = cryptoCurrency
