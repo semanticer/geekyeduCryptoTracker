@@ -9,6 +9,4 @@ import android.support.annotation.NonNull
 class CryptoCurrencyAmount(
         @NonNull @PrimaryKey(autoGenerate = false) var id: String,
         @ColumnInfo var amount: Double
-) {
-    constructor(): this("", 0.0)
-}
+)
