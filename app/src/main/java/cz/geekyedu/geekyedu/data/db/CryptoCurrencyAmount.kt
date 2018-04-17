@@ -8,7 +8,4 @@ import android.arch.persistence.room.Entity
 @Entity
 class CryptoCurrencyAmount(
         /* TODO add id and amount with appropriate annotations */
-) {
-    // TODO uncomment to implement default constructor
-    // constructor(): this("", 0.0)
-}
+)
