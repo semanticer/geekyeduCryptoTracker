@@ -7,7 +7,7 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.text.InputType
 import android.widget.Toast
-import androidx.view.isVisible
+import androidx.core.view.isVisible
 import com.afollestad.materialdialogs.MaterialDialog
 import cz.geekyedu.geekyedu.R
 import cz.geekyedu.geekyedu.data.model.CryptoCurrency
